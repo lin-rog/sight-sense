@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: EventListener
+metadata:
+  name: sight_listener
+  label: {en_US: Sight Sense Listener, zh_Hans: 视感监听器}
+spec: {}
+execution:
+  python:
+    path: default.py
+    attr: SightListener

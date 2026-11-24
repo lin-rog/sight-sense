@@ -1,0 +1,5 @@
+__pycache__/
+data/
+collector-config.json
+dist/
+*.pyc

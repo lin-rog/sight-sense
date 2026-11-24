@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>视感设置</title>
+<style>
+body{font:16px system-ui;max-width:620px;margin:48px auto;line-height:1.7;color:#173344}
+label{display:block;margin:18px 0}input[type=password],select{display:block;width:100%;padding:9px;box-sizing:border-box}
+button{padding:10px 24px;background:#173344;color:white;border:0;border-radius:6px}p{color:#4e6574}
+</style>
+<h1>视感 · 当前网站计时</h1>
+<p>启用后，仅将当前前台普通标签页的域名传给本机采集器。不会发送完整网址、搜索词、网页正文或浏览历史。无痕模式不启用本扩展。</p>
+<label>配对令牌（collector-config.json 中的 browser_token）<input id="token" type="password" autocomplete="off"></label>
+<label>所在浏览器<select id="browserApp">
+<option value="chrome.exe">Google Chrome</option><option value="msedge.exe">Microsoft Edge</option>
+<option value="brave.exe">Brave</option><option value="vivaldi.exe">Vivaldi</option><option value="opera.exe">Opera</option>
+</select></label>
+<label><input id="enabled" type="checkbox"> 我同意将当前网站域名提供给本机视感采集器</label>
+<p>采集器配置也需设置 collect_domains 为 true。软件和网站按当天累计活跃时长统计，离开电脑满空闲阈值后停止计时。扩展显示 ON 表示最近一次发送成功，! 表示采集器不可达或未正确配对。</p>
+<button id="save">保存设置</button><p id="status" role="status"></p>
+<script src="options.js"></script>
+</html>

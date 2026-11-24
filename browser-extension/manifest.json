@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "视感 · 当前网站计时桥",
+  "version": "0.1.0",
+  "description": "本人启用后，仅将前台普通标签页的域名发送至本机视感采集器。",
+  "permissions": ["tabs", "storage", "alarms"],
+  "host_permissions": ["http://127.0.0.1:19876/*"],
+  "background": {"service_worker": "background.js"},
+  "options_page": "options.html",
+  "action": {"default_title": "视感设置"},
+  "incognito": "not_allowed"
+}

@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Plugin
+metadata:
+  author: local
+  name: sight-sense
+  version: 0.1.0
+  label: {en_US: Sight Sense, zh_Hans: 视感}
+  description:
+    en_US: Opt-in foreground activity logs, duration alerts and private chat observations.
+    zh_Hans: 本人主动启用的前台软件与网站时长日志、阈值推送和私聊观测摘要；画像待定。
+  icon: assets/icon.svg
+spec:
+  config:
+    - name: enabled
+      type: boolean
+      default: false
+      label: {en_US: Enable automatic delivery and context, zh_Hans: 启用自动推送与上下文读取}
+    - name: target_user_id
+      type: string
+      required: true
+      label: {en_US: Owner private account, zh_Hans: 本人私聊账号}
+    - name: bot_uuid
+      type: bot-selector
+      required: true
+      label: {en_US: Paired bot, zh_Hans: 对应机器人}
+    - name: database_path
+      type: string
+      default: /app/data/sight-sense/activity.sqlite3
+      label: {en_US: Shared activity database, zh_Hans: 共享使用记录数据库路径}
+    - name: timezone
+      type: string
+      default: Asia/Shanghai
+      label: {en_US: Time zone, zh_Hans: 时区}
+    - name: app_threshold_minutes
+      type: integer
+      default: 90
+      label: {en_US: Daily app threshold in minutes, zh_Hans: 软件当日累计阈值（分钟）}
+    - name: browser_threshold_minutes
+      type: integer
+      default: 60
+      label: {en_US: Daily browser threshold in minutes, zh_Hans: 浏览器当日累计阈值（分钟，附网站明细）}
+    - name: notify
+      type: boolean
+      default: true
+      label: {en_US: Private threshold alerts, zh_Hans: 私聊发送阈值日志}
+    - name: inject_context
+      type: boolean
+      default: true
+      label: {en_US: Read observations in paired private chat, zh_Hans: 在对应私聊中读取观测摘要}
+  components:
+    EventListener:
+      fromDirs:
+        - path: components/event_listener/
+          maxDepth: 1
+  pages: []
+execution:
+  python:
+    path: main.py
+    attr: SightSense

@@ -1,0 +1,5 @@
+# Add to your existing compose files with an additional -f argument. Not applied automatically.
+services:
+  langbot_plugin_runtime:
+    volumes:
+      - ${SIGHT_SENSE_DATA_DIR:?Set SIGHT_SENSE_DATA_DIR to the collector data directory}:/app/data/sight-sense
